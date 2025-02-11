@@ -28,7 +28,7 @@ choco install everything
 choco install conemu
 choco pin add -n conemu # This app has built-in auto-update
 choco install 7zip.install
-choco install microsoft-windows-terminal
+choco install microsoft-windows-terminal # This fails on latest win11 as it seems to come preinstalled.
 choco install beyondcompare
 
 # Systems
