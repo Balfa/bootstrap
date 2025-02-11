@@ -182,6 +182,7 @@ Get-AppxPackage *bingfinance* | Remove-AppxPackage
 Get-AppxPackage *zunevideo* | Remove-AppxPackage
 Get-AppxPackage *bingnews* | Remove-AppxPackage
 Get-AppxPackage *onenote* | Remove-AppxPackage
+# Get-AppxPackage *people* | Remove-AppxPackage # Seems to cause errors trying to remove this on latest win 11?
 Get-AppxPackage *windowsphone* | Remove-AppxPackage
 # Get-AppxPackage *photos* | Remove-AppxPackage # try out not removing this?
 # Get-AppxPackage *windowsstore* | Remove-AppxPackage # oh god maybe not this one? I already uninstalled it this time, but I might need it? 
