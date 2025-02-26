@@ -1,0 +1,14 @@
+# boxstarter-hardware-specific.txt
+# Installs choco pkgs related to particular hardware I use on my pc
+
+# To run (in powershell):
+#########################
+# Set-ExecutionPolicy RemoteSigned
+# . { iwr -useb https://boxstarter.org/bootstrapper.ps1 } | iex; Get-Boxstarter -Force
+# Install-BoxstarterPackage -DisableReboots -PackageName https://gist.githubusercontent.com/Balfa/d39406f11e067aca19104783ed5e45aa/raw/z-boxstarter-hardware-specific.txt
+
+# Currently called directly by the script in post-install-first-steps.txt
+
+# choco install lghub # No longer need since I got G915 keyboard working with onboard memory now as well as mouse!
+choco install steelseries-engine
+# lcdsirreal # No such choco package :(
