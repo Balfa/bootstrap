@@ -14,3 +14,6 @@ scripts to bootstrap fresh windows install
 - Start migrating apps from choco to winget?
 - Maybe split personal into gaming, dev, etc.?
 - The rest of postinstallfirststeps...
+- Test each change/install
+- Validate idempotency
+- Test uninstalling packages
