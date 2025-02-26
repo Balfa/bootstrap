@@ -1,0 +1,40 @@
+# boxstarter-administered-appliances.txt
+# My main home pc boxstarter script that I've been curating through the years
+
+# To run (in powershell):
+#########################
+# Set-ExecutionPolicy RemoteSigned
+# . { iwr -useb https://boxstarter.org/bootstrapper.ps1 } | iex; Get-Boxstarter -Force
+# Install-BoxstarterPackage -DisableReboots -PackageName https://raw.githubusercontent.com/Balfa/bootstrap/refs/heads/mehhacking/boxstarter-personal.txt
+
+# Currently called directly by bootstrap.ps1
+
+# Personal
+choco install keepass
+choco install googledrive
+choco install t-clock
+choco install autohotkey
+choco install soundswitch # See `SoundSwitch Settings.png` in google drive # TODO: Maybe replace this with autohotkey macros
+
+# Utils
+choco install paint.net
+choco install screentogif
+# choco install sumatrapdf # PDF/ePub/etc viewer
+
+# Gaming
+choco install gamesavemanager
+choco install steam
+choco pin add -n steam # This app has built-in auto-update
+choco install discord
+choco install ds4windows
+choco install minecraft-launcher
+choco install epicgameslauncher
+
+# Make life possible
+choco install vlc
+choco install mpc-hc-clsid2
+choco install spotify
+
+# Dev
+## dotnet
+choco install dotnet-sdk

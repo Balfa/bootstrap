@@ -1,0 +1,45 @@
+# boxstarter-administered-appliances.txt
+# boxstarter script for any appliances I administer, such as family PCs.
+
+# (Note: I don't think these get installed for all users, sooo.... that might be a problem?)
+
+# To run (in powershell):
+#########################
+# Set-ExecutionPolicy RemoteSigned
+# . { iwr -useb https://boxstarter.org/bootstrapper.ps1 } | iex; Get-Boxstarter -Force
+# Install-BoxstarterPackage -DisableReboots -PackageName https://raw.githubusercontent.com/Balfa/bootstrap/refs/heads/mehhacking/boxstarter-administered-appliances.txt
+
+# Currently called directly by bootstrap.ps1
+
+Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowFileExtensions
+Disable-BingSearch
+Disable-GameBarTips
+choco feature enable -n allowGlobalConfirmation
+
+# Basic
+choco install googlechrome
+choco pin add -n googlechrome # This app has built-in auto-update
+choco install sublimetext4
+choco pin add -n sublimetext4 # This app has built-in auto-update
+choco install vscode
+choco pin add -n vscode # This app has built-in auto-update
+choco install chocolatey
+choco install everything
+choco install conemu
+choco pin add -n conemu # This app has built-in auto-update
+choco install 7zip.install
+choco install microsoft-windows-terminal # This fails on latest win11 as it seems to come preinstalled.
+choco install beyondcompare
+
+# Systems
+choco install cpu-z
+choco install firefox
+choco pin add -n firefox # This app has built-in auto-update
+# choco install opera # Farewall, kindly stud?
+# choco pin add -n opera # This app has built-in auto-update
+choco install sysinternals
+choco install Wget
+choco pin add -n paint.net # This app has built-in auto-update
+choco install spacesniffer
+choco install git
+choco install powershell-core
