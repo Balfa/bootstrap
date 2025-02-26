@@ -5,7 +5,7 @@ scripts to bootstrap fresh windows install
 1. Run powershell (`wt`) as admin and paste the following:
     ```ps1 
     Set-ExecutionPolicy RemoteSigned
-    iex "& { $(iwr -useb https://raw.githubusercontent.com/Balfa/bootstrap/refs/heads/mehhacking/bootstrap.ps1) } -ComputerName Weggles -PackageLevel 'personal'"
+    iex "& { $(iwr -useb https://raw.githubusercontent.com/Balfa/bootstrap/refs/heads/main/bootstrap.ps1) } -ComputerName Weggles -PackageLevel 'personal'"
     Set-ExecutionPolicy Restricted
     ```
 
