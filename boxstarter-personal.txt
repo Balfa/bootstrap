@@ -1,4 +1,4 @@
-# boxstarter-administered-appliances.txt
+# boxstarter-personal.txt
 # My main home pc boxstarter script that I've been curating through the years
 
 # To run (in powershell):

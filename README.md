@@ -19,3 +19,5 @@ scripts to bootstrap fresh windows install
 - Test uninstalling packages
 - Move the references of gist.githubusercontent.com to files in this repo (or _possibly_ other repos).
   - Maybe move the references of raw.githubusercontent.com in here also from their respective repos?
+- Do the packages in boxstarter-administered-appliances.txt get installed for all uers?
+  - Test this. I don't think they do. That might be a problem 😑

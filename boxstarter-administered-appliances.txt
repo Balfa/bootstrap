@@ -1,8 +1,6 @@
 # boxstarter-administered-appliances.txt
 # boxstarter script for any appliances I administer, such as family PCs.
 
-# (Note: I don't think these get installed for all users, sooo.... that might be a problem?)
-
 # To run (in powershell):
 #########################
 # Set-ExecutionPolicy RemoteSigned
