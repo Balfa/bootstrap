@@ -3,8 +3,8 @@ param (
     [string]$PackageLevel
 )
 
-. { iwr -useb https://boxstarter.org/bootstrapper.ps1 } | iex; Get-Boxstarter -Force
-iex "& { $(iwr -useb https://raw.githubusercontent.com/Balfa/bootstrap/refs/heads/main/regfixes.ps1) } -ComputerName $ComputerName"
+. { Invoke-WebRequest -useb https://boxstarter.org/bootstrapper.ps1 } | Invoke-Expression; Get-Boxstarter -Force
+Invoke-Expression "& { $(Invoke-WebRequest -useb https://raw.githubusercontent.com/Balfa/bootstrap/refs/heads/main/regfixes.ps1) } -ComputerName $ComputerName"
 
 # Define package URLs
 $administeredPackage = "https://raw.githubusercontent.com/Balfa/bootstrap/refs/heads/main/boxstarter-administered-appliances.txt"
@@ -23,6 +23,8 @@ Install-BoxstarterPackage -DisableReboots -PackageName $administeredPackage
 # Install personal package for 'personal' or 'hardware-specific' levels
 if ($PackageLevel -in @("personal", "hardware-specific")) {
     Install-BoxstarterPackage -DisableReboots -PackageName $personalPackage
+    Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Balfa/dotfiles/main/install.sh" -UseBasicParsing | Select-Object -ExpandProperty Content | & "C:\Program Files\Git\bin\bash.exe"
+
 }
 
 # Install hardware-specific package only for 'hardware-specific' level
