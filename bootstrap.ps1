@@ -30,6 +30,8 @@ if ($PackageLevel -in @("personal", "hardware-specific")) {
     Invoke-WebRequest -Uri "https://gist.githubusercontent.com/Balfa/e56e6c1fffcb8609828ab637942dbaa7/raw/install.sh" -UseBasicParsing | Select-Object -ExpandProperty Content | & "C:\Program Files\Git\bin\bash.exe"
     # Add "Open With Sublime Text" to context menu (with icon!!)
     Invoke-WebRequest -Uri "https://gist.githubusercontent.com/Balfa/3a7e049dc1ac2d8ae1441a6e4e7c3f37/raw/OpenWithSublimeText.bat" -UseBasicParsing | Select-Object -ExpandProperty Content | & cmd
+    # Install Caskaydia Cove font
+    Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Balfa/bootstrap/main/install_caskaydia_cove.sh" -UseBasicParsing | Select-Object -ExpandProperty Content | & "C:\Program Files\Git\bin\bash.exe"
 }
 
 # Install hardware-specific package only for 'hardware-specific' level

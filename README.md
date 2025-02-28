@@ -17,3 +17,5 @@ scripts to bootstrap fresh windows install
 - Test each change/install
 - Validate idempotency
 - Test uninstalling packages
+- Move the references of gist.githubusercontent.com to files in this repo (or _possibly_ other repos).
+  - Maybe move the references of raw.githubusercontent.com in here also from their respective repos?
