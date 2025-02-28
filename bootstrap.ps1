@@ -3,6 +3,12 @@ param (
     [string]$PackageLevel
 )
 
+# Validate PackageLevel
+if ($PackageLevel -notin @("administered", "personal", "hardware-specific")) {
+    Write-Error "Invalid PackageLevel specified. Use 'administered', 'personal', or 'hardware-specific'."
+    exit 1
+}
+
 . { Invoke-WebRequest -useb https://boxstarter.org/bootstrapper.ps1 } | Invoke-Expression; Get-Boxstarter -Force
 Invoke-Expression "& { $(Invoke-WebRequest -useb https://raw.githubusercontent.com/Balfa/bootstrap/refs/heads/main/regfixes.ps1) } -ComputerName $ComputerName"
 
@@ -10,12 +16,6 @@ Invoke-Expression "& { $(Invoke-WebRequest -useb https://raw.githubusercontent.c
 $administeredPackage = "https://raw.githubusercontent.com/Balfa/bootstrap/refs/heads/main/boxstarter-administered-appliances.txt"
 $personalPackage = "https://raw.githubusercontent.com/Balfa/bootstrap/refs/heads/main/boxstarter-personal.txt"
 $hardwareSpecificPackage = "https://raw.githubusercontent.com/Balfa/bootstrap/refs/heads/main/boxstarter-hardware-specific.txt"
-
-# Validate PackageLevel
-if ($PackageLevel -notin @("administered", "personal", "hardware-specific")) {
-    Write-Error "Invalid PackageLevel specified. Use 'administered', 'personal', or 'hardware-specific'."
-    exit 1
-}
 
 # Always install the administered package
 Install-BoxstarterPackage -DisableReboots -PackageName $administeredPackage
