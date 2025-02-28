@@ -9,12 +9,12 @@ if ($PackageLevel -notin @("administered", "personal", "hardware-specific")) {
 }
 
 . { Invoke-WebRequest -useb https://boxstarter.org/bootstrapper.ps1 } | Invoke-Expression; Get-Boxstarter -Force
-Invoke-Expression "& { $(Invoke-WebRequest -useb https://raw.githubusercontent.com/Balfa/bootstrap/refs/heads/main/regfixes.ps1) } -ComputerName $ComputerName"
+Invoke-Expression "& { $(Invoke-WebRequest -useb https://raw.githubusercontent.com/Balfa/bootstrap/main/regfixes.ps1) } -ComputerName $ComputerName"
 
 # Define package URLs
-$administeredPackage = "https://raw.githubusercontent.com/Balfa/bootstrap/refs/heads/main/boxstarter-administered-appliances.txt"
-$personalPackage = "https://raw.githubusercontent.com/Balfa/bootstrap/refs/heads/main/boxstarter-personal.txt"
-$hardwareSpecificPackage = "https://raw.githubusercontent.com/Balfa/bootstrap/refs/heads/main/boxstarter-hardware-specific.txt"
+$administeredPackage = "https://raw.githubusercontent.com/Balfa/bootstrap/main/boxstarter-administered-appliances.txt"
+$personalPackage = "https://raw.githubusercontent.com/Balfa/bootstrap/main/boxstarter-personal.txt"
+$hardwareSpecificPackage = "https://raw.githubusercontent.com/Balfa/bootstrap/main/boxstarter-hardware-specific.txt"
 
 # Always install the administered package
 Install-BoxstarterPackage -DisableReboots -PackageName $administeredPackage
