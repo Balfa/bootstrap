@@ -5,8 +5,7 @@ param (
 
 # Validate PackageLevel
 if ($PackageLevel -notin @("administered", "personal", "hardware-specific")) {
-    Write-Error "Invalid PackageLevel specified. Use 'administered', 'personal', or 'hardware-specific'."
-    exit 1
+    throw "Invalid PackageLevel specified. Use 'administered', 'personal', or 'hardware-specific'."
 }
 
 . { Invoke-WebRequest -useb https://boxstarter.org/bootstrapper.ps1 } | Invoke-Expression; Get-Boxstarter -Force
