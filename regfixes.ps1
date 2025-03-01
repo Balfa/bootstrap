@@ -139,9 +139,20 @@ Function RenameComputer {
 }
 Function FixMissingGameBarError {
     # From https://www.reddit.com/r/WindowsHelp/comments/108ngxr/properly_uninstalling_xbox_gamebar_and_resolve/
+    Write-Host "Fixing Missing Game Bar Error...?"
     reg add HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR /f /t REG_DWORD /v "AppCaptureEnabled" /d 0
     reg add HKEY_CURRENT_USER\System\GameConfigStore /f /t REG_DWORD /v "GameDVR_Enabled" /d 0
 }
+Function BypassWindows11ContextMenu {
+    # restores old explorer context menu in windows 11 (instead of daft "Show more options" thing)
+    # Converted by ChatGPT (https://chatgpt.com/c/67c20d40-f3f4-8007-932a-220504ab656d) from `reg.exe add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve`
+    # Which came originally from https://www.reddit.com/r/microsoft/comments/sv88tb/how_to_remove_show_more_options_from_windows_11/hxepvbb/
+    Write-Host "Restoring old pre-Windows 11 explorer context menu..."
+    $regPath = "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32"
+    New-Item -Path $regPath -Force | Out-Null
+    Set-ItemProperty -Path $regPath -Name "(default)" -Value "" -Force
+}
+
 
 ShowTrayIcons
 HideTaskbarSearchBox
@@ -163,6 +174,7 @@ HideTaskbarOnSecondMonitor
 SetExplorerDefaultLocationToMyComputer
 FixRdpUdpBug
 FixMissingGameBarError
+BypassWindows11ContextMenu
 RenameComputer -NewName "$ComputerName"
 
 
