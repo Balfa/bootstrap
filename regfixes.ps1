@@ -237,4 +237,5 @@ Get-AppxPackage Microsoft.MixedReality.Portal | Remove-AppxPackage
 Get-AppxPackage Microsoft.MicrosoftStickyNotes | Remove-AppxPackage
 # Get-AppxPackage Microsoft.MicrosoftEdge.Stable | Remove-AppxPackage
 Get-AppxPackage SpotifyAB.SpotifyMusic | Remove-AppxPackage
+# From https://www.reddit.com/r/Windows11/comments/x739nt/is_there_a_way_to_fully_disable_widgets_processes/
 winget uninstall "Windows Web Experience pack"
