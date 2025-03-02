@@ -42,3 +42,4 @@ choco pin add -n paint.net # This app has built-in auto-update
 choco install spacesniffer
 choco install git
 choco install powershell-core
+winget uninstall "Windows Web Experience pack"
