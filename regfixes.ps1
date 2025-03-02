@@ -237,3 +237,4 @@ Get-AppxPackage Microsoft.MixedReality.Portal | Remove-AppxPackage
 Get-AppxPackage Microsoft.MicrosoftStickyNotes | Remove-AppxPackage
 # Get-AppxPackage Microsoft.MicrosoftEdge.Stable | Remove-AppxPackage
 Get-AppxPackage SpotifyAB.SpotifyMusic | Remove-AppxPackage
+winget uninstall "Windows Web Experience pack"
