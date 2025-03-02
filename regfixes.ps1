@@ -4,8 +4,7 @@
 # To run (in powershell):
 #########################
 # Set-ExecutionPolicy RemoteSigned
-# . { iwr -useb https://boxstarter.org/bootstrapper.ps1 } | iex; Get-Boxstarter -Force
-# Install-BoxstarterPackage -DisableReboots -PackageName https://gist.githubusercontent.com/Balfa/9fb4e630d6c735fbbd9b080c2c7a831e/raw/boxstarter-regfixes.ps1
+# Invoke-Expression "& { $(Invoke-WebRequest -useb https://raw.githubusercontent.com/Balfa/bootstrap/main/regfixes.ps1) } -ComputerName $ComputerName"
 # Set-ExecutionPolicy Restricted
 
 # Currently called directly by bootstrap.ps1
@@ -152,6 +151,20 @@ Function BypassWindows11ContextMenu {
     New-Item -Path $regPath -Force | Out-Null
     Set-ItemProperty -Path $regPath -Name "(default)" -Value "" -Force
 }
+Function MoveTaskbarToLeft {
+    # Moves the Windows 11 taskbar and start menu to the left side of the screen
+    Write-Host "Moving taskbar and start menu to the left..."
+    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarAl" -Type DWord -Value 0 -Force
+}
+Function DisableWindows11Widgets {
+    # Disables Windows 11 Taskbar Widgets
+    Write-Host "Disabling Windows 11 Taskbar Widgets..."
+    Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarDa" -Type DWord -Value 0 -Force
+}
+Function RestartExplorer {
+    Write-Host "Restarting Explorer to apply changes..."
+    Stop-Process -Name explorer -Force; Start-Process explorer
+}
 
 
 ShowTrayIcons
@@ -175,7 +188,10 @@ SetExplorerDefaultLocationToMyComputer
 FixRdpUdpBug
 FixMissingGameBarError
 BypassWindows11ContextMenu
+MoveTaskbarToLeft
+DisableWindows11Widgets
 RenameComputer -NewName "$ComputerName"
+RestartExplorer
 
 
 # Remove Windows preinstalled crap # This has to happen before boxtarter. At least the preloaded version of Spotify does
